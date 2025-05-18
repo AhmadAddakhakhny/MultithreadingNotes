@@ -49,8 +49,8 @@ project/
 
 ### Clone
 ```bash
-git clone https://github.com/AhmadAddakhakhny/CppProjectTemplate.git
-git clone git@github.com:AhmadAddakhakhny/CppProjectTemplate.git
+git clone https://github.com/AhmadAddakhakhny/MultithreadingNotes.git
+git clone git@github.com:AhmadAddakhakhny/MultithreadingNotes.git
 ```
 
 ## Bulid with different flavours

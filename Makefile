@@ -2,7 +2,7 @@
 #####							Top level Makefile for Project_Name
 ########################################################################
 
-project_type=release 			# Values [release, debug, test]
+project_type=release# Values [release, debug, test]
 compiler_options = "."
 config=
 
@@ -79,3 +79,7 @@ cleanFmt:
 # Clean all build files, binaries and generated doxygen docs
 clean: cleanR cleanD cleanTst cleanDoc cleanFmt
 	@echo "################## Clean All Project Done"
+
+prep:
+	$(MAKE) all project_type=release compiler_options=" -DCPM_ENABLED=ON"
+	@echo "################## Prepare project environment done."

@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.0.0)
 project(
-    CppProjectTemplate
+    MultithreadingNotes
     VERSION 1.0.0
     LANGUAGES C CXX)
 
