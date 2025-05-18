@@ -1,6 +1,13 @@
 set(APP_SOURCES "main.cpp")
 add_executable(app.exe ${APP_SOURCES})
 
+find_package(Threads REQUIRED)
+if(Threads_FOUND)
+    target_link_libraries(app.exe PRIVATE Threads::Threads)
+else()
+    message(ERROR "######################## PThread not found!!!!!")
+endif()
+
 target_link_libraries(app.exe PUBLIC LIB)
 
 # Target include files paths shall be passed to this function
