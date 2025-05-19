@@ -52,3 +52,60 @@
 > Either-Me-Or-You policy (Mutual Execlusion)
 > Makes operations atomic
 > If one thread is in the critical section, the other must block and wait!
+
+### Q14. What do you need to know about std::mutex?
+> One mutex per critical section  
+> It has to be shared variable!  
+
+### Q15. What do you need to know about lock-unlock?
+> lock and unlock should match
+> don't forget to unlock
+> * If exception happens, mutex stays locked.
+
+### Q15. What do you need to know about std::lock_guard?
+> if exception happens, mutex gets released. follows RAII
+```cpp
+std::mutex g_mtx_cntr;
+uint64_t g_cntr = 0;
+for (int i =0; i < 100; i++) {
+  std::lock_guard<std::mutex> guard(g_mtx_cntr);
+  /* critical section*/
+  g_cntr++;
+}
+```
+### Q16. What do you need to know about std::unique_guard?
+> it's same as lock_guard + lock/unlock option.
+
+### Q17. What do you need to know about std::shared_mutex, std::shared_lock?
+> Only a single thread can mutate the attributes, but multiple threads can read if no writer has locked
+
+```cpp
+std::shared_mutex g_shared_mtx_cntr;
+uint64_t g_cntr = 0;
+
+void increment() {
+  for (int i = 0; i < 100; i++) {
+    std::unique_lock<std::shared_mutex> u(g_shared_mtx_cntr);
+    g_cntr++; // critical section
+  }
+}
+
+void iamJustReader() {
+  std::shared_lock<std::shared_mutex> s(g_shared_mtx_cntr);
+  std::cout << g_cntr; << std::endl;
+}
+```
+### Q18. How to do multiple lock for several mutexes std::scoped_lock?
+> it's better to prevent from dead lock scenarios.
+```cpp
+void increment () {
+  for (int i = 0; i < 100; i++) {
+    std::scoped_lock scoped_lock_gaurd(g_mtx_one, g_mtx_two);
+    g_cntr++;
+  }
+}
+```
+---
+# Conditional Variables
+> it's being used to let one thread able to send a message to another thread.
+> it resolves producer-consumer pattern

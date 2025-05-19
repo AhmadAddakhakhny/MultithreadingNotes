@@ -26,7 +26,6 @@ int main() {
     }
 
     std::cout << cntr << " , ";  // expected output 10,000
-
   }
 
   std::cout << std::endl << "############### Program Done!" << std::endl;
