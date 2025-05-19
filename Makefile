@@ -12,6 +12,11 @@ all:
 	cd build/out/${project_type} && cmake ${compiler_options} ../../.. && cmake --build . ${config}
 	@echo "################## Build files genearation done."
 
+# Prepare project third party dependancies and project environment
+prep:
+	$(MAKE) all project_type=release compiler_options=" -DCPM_ENABLED=ON"
+	@echo "################## Prepare project environment done."
+
 # Generate and build for release 
 r:
 	$(MAKE) all project_type=release compiler_options=" -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE=-O3 -DCMAKE_C_FLAGS_RELEASE=-O3"
@@ -79,7 +84,3 @@ cleanFmt:
 # Clean all build files, binaries and generated doxygen docs
 clean: cleanR cleanD cleanTst cleanDoc cleanFmt
 	@echo "################## Clean All Project Done"
-
-prep:
-	$(MAKE) all project_type=release compiler_options=" -DCPM_ENABLED=ON"
-	@echo "################## Prepare project environment done."

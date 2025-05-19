@@ -27,3 +27,28 @@
 
 ### Q9. Whe to use std::future<T>?
 >  It's a placeholder or promise for a value of type T that will become available later.
+
+---
+
+### Q10. What is race condition?
+> There are one or more thread trying to access/write the same member variable at the same time and would result to undefined behaviour.  
+> The main problem is with **share data** across threads:
+> > Race condition  
+> > Wrong order of operations
+
+### Q11. What are the solutions for race conditions?
+> 1. Mutex and Locks
+> 2. std::atomic: memory models
+> 3. Abstraction: CSP, Actors, Map-Reduce
+
+### Q12. List the types of mutex?
+> lock/unlock
+> lock_guard
+> unique_lock
+> shared_lock
+> scoped_lock
+
+### Q13. What is the idea of Mutex?
+> Either-Me-Or-You policy (Mutual Execlusion)
+> Makes operations atomic
+> If one thread is in the critical section, the other must block and wait!
