@@ -109,3 +109,18 @@ void increment () {
 # Conditional Variables
 > it's being used to let one thread able to send a message to another thread.
 > it resolves producer-consumer pattern
+
+### Q19. What are the key elements should be placed in the critical section to implement based on conditional variable approach?
+> 1. instance of conditional variable build by the mutex
+> 2. flag for read and write permission
+> 3. shared data between 2 threads
+> Remark: these variables + the mutex should be created in shared memory location between the threads.
+
+### Q20. Explain std::conditional_variable::wait()?
+> it takes two arguments
+> 1st: lock_gaurd for the mutex
+> 2nd: functor/LambdExpression
+> it's responsiple for letting the thread blocked if either the mutex locked by another worker or the functor valuation is false
+
+### Q21. Explain std::conditional_variable::notify_once() or std::conditional_variable::notify_all()?
+> once it's being called all the blocked threads will be notified to wake up.
