@@ -124,3 +124,6 @@ void increment () {
 
 ### Q21. Explain std::conditional_variable::notify_once() or std::conditional_variable::notify_all()?
 > once it's being called all the blocked threads will be notified to wake up.
+---
+# Thread pool
+> a pool of many threads that are running and waiting for task to handle.
