@@ -127,3 +127,11 @@ void increment () {
 ---
 # Thread pool
 > a pool of many threads that are running and waiting for task to handle.
+---
+
+### What is thead::detach()?
+> To detach newly created thread from the pqrent thread.
+
+
+### Remarks:
+> whenever a thread object created, it's marked as joinable.
